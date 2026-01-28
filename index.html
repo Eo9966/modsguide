@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModGuide - FarmHelperEasy Minecraft Mod Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f1419;
+            color: #e0e0e0;
+            line-height: 1.6;
+            background-image: linear-gradient(rgba(15, 20, 25, 0.9), rgba(15, 20, 25, 0.9)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(20, 25, 30, 0.95);
+            padding: 15px 0;
+            border-bottom: 2px solid #00a8ff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            color: #00a8ff;
+            font-size: 28px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #00a8ff, #00ffaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00a8ff;
+        }
+
+        .nav-links a.active {
+            color: #00ffaa;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #00ffaa;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #00a8ff, #9d4edd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* Scroll Down Button */
+        .scroll-down {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: #00a8ff;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-down i {
+            font-size: 2rem;
+        }
+
+        .scroll-down span {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* FarmHelperEasy Section */
+        .featured-mod {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #e0e0e0;
+            text-align: center;
+        }
+
+        .mod-highlight {
+            background: rgba(30, 35, 40, 0.8);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            border: 2px solid #00a8ff;
+            box-shadow: 0 15px 35px rgba(0, 168, 255, 0.2);
+            text-align: left;
+        }
+
+        .mod-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .mod-main-icon {
+            font-size: 3.5rem;
+            color: #ff9966;
+        }
+
+        .mod-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0;
+        }
+
+        .mod-subtitle {
+            color: #00a8ff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .mod-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #c0c0c0;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(40, 45, 50, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid #00ffaa;
+        }
+
+        .mod-features h3 {
+            color: #00ffaa;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .features-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #e0e0e0;
+        }
+
+        .features-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00ffaa;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .mod-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .guide-btn {
+            background: linear-gradient(90deg, #00a8ff, #0077cc);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .guide-btn:hover {
+            background: linear-gradient(90deg, #00c3ff, #0088dd);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 168, 255, 0.4);
+        }
+
+        .download-btn {
+            background: linear-gradient(90deg, #00cc88, #009955);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(90deg, #00dd99, #00aa66);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 204, 136, 0.4);
+        }
+
+        /* Guide Items Section */
+        .guide-items {
+            padding: 60px 0;
+            display: none;
+        }
+
+        .guide-items.show {
+            display: block;
+        }
+
+        /* Item Buttons Section */
+        .item-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .item-button {
+            background: linear-gradient(90deg, #00a8ff, #0077cc);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .item-button:hover {
+            background: linear-gradient(90deg, #00c3ff, #0088dd);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 168, 255, 0.4);
+        }
+
+        .item-button.grass {
+            background: linear-gradient(90deg, #00cc88, #009955);
+        }
+
+        .item-button.grass:hover {
+            background: linear-gradient(90deg, #00dd99, #00aa66);
+        }
+
+        /* Item Details Section */
+        .item-details {
+            display: none;
+            background: rgba(30, 35, 40, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            border: 2px solid #00a8ff;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .item-details.show {
+            display: block;
+        }
+
+        .item-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .item-icon {
+            font-size: 3rem;
+            color: #00ffaa;
+        }
+
+        .item-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0;
+        }
+
+        .item-drop-info {
+            background: rgba(40, 45, 50, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 4px solid #ffaa00;
+        }
+
+        .item-drop-info h3 {
+            color: #ffaa00;
+            margin-bottom: 10px;
+        }
+
+        .item-drop-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .item-drop-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #e0e0e0;
+        }
+
+        .item-drop-list li:before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: #00ffaa;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Crafting Sections */
+        .crafting-section {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(40, 45, 50, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid #ffaa00;
+        }
+
+        .crafting-section h3 {
+            color: #ffaa00;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .crafting-image {
+            width: 100%;
+            height: 220px;
+            background-color: rgba(50, 55, 60, 0.7);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid #4a5a6a;
+        }
+
+        .crafting-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .crafting-description {
+            color: #c0c0c0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Dry Flower Crafting */
+        .dry-flower-crafting {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(40, 45, 50, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid #ff6699;
+        }
+
+        .dry-flower-crafting h3 {
+            color: #ff6699;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* Flower List */
+        .flower-list-section {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(40, 45, 50, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid #00a8ff;
+        }
+
+        .flower-list-section h3 {
+            color: #00a8ff;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .flower-list {
+            list-style-type: none;
+            padding-left: 0;
+            color: #c0c0c0;
+            line-height: 1.6;
+        }
+
+        .flower-list li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .flower-list li:before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: #00ffaa;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Back Buttons */
+        .back-to-items {
+            background: rgba(40, 45, 50, 0.8);
+            color: #00a8ff;
+            border: 1px solid #00a8ff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-to-items:hover {
+            background: rgba(0, 168, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .back-to-mod {
+            background: rgba(40, 45, 50, 0.8);
+            color: #00a8ff;
+            border: 1px solid #00a8ff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-to-mod:hover {
+            background: rgba(0, 168, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Footer - Simplified */
+        footer {
+            background-color: rgba(10, 15, 20, 0.95);
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid #2a3a4a;
+            text-align: center;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            color: #6a7a8a;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .mod-highlight {
+                padding: 25px;
+            }
+            
+            .mod-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .mod-title {
+                font-size: 1.8rem;
+            }
+            
+            .mod-actions {
+                justify-content: center;
+            }
+            
+            .item-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .item-button {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .flower-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-wind logo-icon"></i>
+                <h1>ModGuide</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active">Mods</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Complete Guide for FarmHelperEasy Mod</h2>
+                <p>Step-by-step tutorials and all information about FarmHelperEasy mod. Find everything you need to know!</p>
+                
+                <!-- Scroll Down Button -->
+                <div class="scroll-down" onclick="scrollToMod()">
+                    <i class="fas fa-chevron-down"></i>
+                    <span>Scroll down to view mod details</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Mod Section - FarmHelperEasy -->
+        <section class="featured-mod" id="mod-section">
+            <div class="container">
+                <h2 class="section-title">Featured Mod Guide</h2>
+                <div class="mod-highlight">
+                    <div class="mod-header">
+                        <i class="fas fa-wind mod-main-icon"></i>
+                        <div>
+                            <h2 class="mod-title">FarmHelperEasy</h2>
+                            <p class="mod-subtitle">Helper Mod for Easy Resource Gathering</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mod-description">
+                        <p>This mod makes it easier to get bone meal than ever before, which is very helpful for gardeners and adds more meaning to grass and flowers. Simplify your farming and resource gathering with minimal effort.</p>
+                    </div>
+                    
+                    <div class="mod-features">
+                        <h3>Key Features:</h3>
+                        <ul class="features-list">
+                            <li>Low performance impact</li>
+                            <li>One-click setup for quick installation</li>
+                            <li>Configurable automation settings</li>
+                            <li>Compatible with Minecraft Forge 1.20.1 and NeoForge 1.20.4</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mod-actions">
+                        <button class="guide-btn" onclick="showItemsSection()">
+                            <i class="fas fa-book"></i> View Items Guide
+                        </button>
+                        <button class="download-btn" onclick="downloadMod()">
+                            <i class="fas fa-download"></i> Download FarmHelperEasy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guide Items Section (Hidden by default) -->
+        <section class="guide-items" id="items-section">
+            <div class="container">
+                <button class="back-to-mod" onclick="showModSection()">
+                    <i class="fas fa-arrow-left"></i> Back to Mod Description
+                </button>
+                
+                <h2 class="section-title">FarmHelperEasy Items Guide</h2>
+                
+                <p style="text-align: center; color: #a0a0a0; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Select an item below to view detailed information about it:
+                </p>
+                
+                <!-- Item Buttons -->
+                <div class="item-buttons">
+                    <button class="item-button" onclick="showItemDetails('dry-flower')">
+                        <i class="fas fa-leaf"></i> Dry Flower
+                    </button>
+                    
+                    <button class="item-button grass" onclick="showItemDetails('dry-grass')">
+                        <i class="fas fa-seedling"></i> Dry Grass
+                    </button>
+                </div>
+                
+                <!-- Dry Flower Details (Hidden by default) -->
+                <div class="item-details" id="dry-flower-details">
+                    <div class="item-header">
+                        <i class="fas fa-leaf item-icon"></i>
+                        <h2 class="item-title">Dry Flower</h2>
+                    </div>
+                    
+                    <div class="dry-flower-crafting">
+                        <h3>How to obtain Dry Flower:</h3>
+                        <div class="crafting-image">
+                            <img src="https://drive.google.com/thumbnail?id=18ZEvlShJY2IFCJWGCxUg67QuSCD4LOpw&sz=w1000" alt="Dry Flower Crafting" onerror="this.src='https://via.placeholder.com/500x200/2a3a4a/ff6699?text=Dry+Flower+Crafting+Process'">
+                        </div>
+                        <p class="crafting-description">Place any flower in the world to dry it and obtain Dry Flower.</p>
+                    </div>
+                    
+                    <!-- Flower List Section (comes before bone meal crafting) -->
+                    <div class="flower-list-section">
+                        <h3>Flowers that can be used in crafting:</h3>
+                        <ul class="flower-list">
+                            <li>Dandelion</li>
+                            <li>Poppy</li>
+                            <li>Blue Orchid</li>
+                            <li>Allium</li>
+                            <li>Azure Bluet</li>
+                            <li>Red Tulip</li>
+                            <li>Orange Tulip</li>
+                            <li>White Tulip</li>
+                            <li>Pink Tulip</li>
+                            <li>Wither Rose</li>
+                            <li>Torchflower</li>
+                            <li>Lily of the Valley</li>
+                            <li>Oxeye Daisy</li>
+                            <li>Cornflower</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="crafting-section">
+                        <h3>Crafting Bone Meal from Dry Flower</h3>
+                        <div class="crafting-image">
+                            <img src="https://drive.google.com/thumbnail?id=1wD1gBykLo9Dwra7I2_Qva_RPiH4xeuve&sz=w1000" alt="Bone Meal Crafting Recipe from Dry Flower" onerror="this.src='https://via.placeholder.com/500x200/2a3a4a/ffaa00?text=Bone+Meal+Crafting+Recipe+from+Dry+Flower'">
+                        </div>
+                        <p class="crafting-description">Craft bone meal using Dry Flowers in a crafting table.</p>
+                    </div>
+                    
+                    <button class="back-to-items" onclick="backToItems()">
+                        <i class="fas fa-arrow-left"></i> Back to Items List
+                    </button>
+                </div>
+                
+                <!-- Dry Grass Details (Hidden by default) -->
+                <div class="item-details" id="dry-grass-details">
+                    <div class="item-header">
+                        <i class="fas fa-seedling item-icon"></i>
+                        <h2 class="item-title">Dry Grass</h2>
+                    </div>
+                    
+                    <div class="item-drop-info">
+                        <h3>How to obtain Dry Grass:</h3>
+                        <ul class="item-drop-list">
+                            <li>Break Short Grass - 10% drop chance</li>
+                            <li>Break Tall Grass - 20% drop chance</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="crafting-section">
+                        <h3>Crafting Dry Grass Block</h3>
+                        <div class="crafting-image">
+                            <img src="https://drive.google.com/thumbnail?id=1h0RlkB79ZLCUW5sZY48dDeslUuhrxDp7&sz=w1000" alt="Dry Grass Block Crafting" onerror="this.src='https://via.placeholder.com/500x200/2a3a4a/ffaa00?text=Dry+Grass+Block+Crafting'">
+                        </div>
+                        <p class="crafting-description">Craft Dry Grass Block from 9 Dry Grass items.</p>
+                    </div>
+                    
+                    <div class="crafting-section">
+                        <h3>Crafting Grass from Dry Grass Block</h3>
+                        <div class="crafting-image">
+                            <img src="https://drive.google.com/thumbnail?id=1XY6Ok65bCEhLaldNTAp_3jvJP3dcIKf1&sz=w1000" alt="Grass from Dry Grass Block" onerror="this.src='https://via.placeholder.com/500x200/2a3a4a/00ffaa?text=Grass+from+Dry+Grass+Block'">
+                        </div>
+                        <p class="crafting-description">Convert Dry Grass Block back to 9 Grass items.</p>
+                    </div>
+                    
+                    <div class="crafting-section">
+                        <h3>Crafting Bone Meal from Dry Grass</h3>
+                        <div class="crafting-image">
+                            <img src="https://drive.google.com/thumbnail?id=1XWbQdTJSPEYUytXPXUU23TzaqEVW3l-0&sz=w1000" alt="Bone Meal from Dry Grass" onerror="this.src='https://via.placeholder.com/500x200/2a3a4a/00a8ff?text=Bone+Meal+from+Dry+Grass'">
+                        </div>
+                        <p class="crafting-description">Craft bone meal using Dry Grass items.</p>
+                    </div>
+                    
+                    <button class="back-to-items" onclick="backToItems()">
+                        <i class="fas fa-arrow-left"></i> Back to Items List
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2023 ModGuide. This site is not affiliated with Mojang or Microsoft. All game content and trademarks are property of their respective owners.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Elements
+        const modSection = document.getElementById('mod-section');
+        const itemsSection = document.getElementById('items-section');
+        
+        // Scroll to mod section function
+        function scrollToMod() {
+            modSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Show items section function
+        function showItemsSection() {
+            modSection.style.display = 'none';
+            itemsSection.classList.add('show');
+            // Hide any open item details
+            hideAllItemDetails();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Show mod section function
+        function showModSection() {
+            itemsSection.classList.remove('show');
+            modSection.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Show specific item details
+        function showItemDetails(itemId) {
+            // Hide all item details first
+            hideAllItemDetails();
+            
+            // Show the selected item details
+            const detailsElement = document.getElementById(itemId + '-details');
+            if (detailsElement) {
+                detailsElement.classList.add('show');
+                window.scrollTo({ top: detailsElement.offsetTop - 100, behavior: 'smooth' });
+            }
+        }
+        
+        // Hide all item details
+        function hideAllItemDetails() {
+            const allDetails = document.querySelectorAll('.item-details');
+            allDetails.forEach(detail => {
+                detail.classList.remove('show');
+            });
+        }
+        
+        // Back to items list function
+        function backToItems() {
+            hideAllItemDetails();
+            window.scrollTo({ top: itemsSection.offsetTop, behavior: 'smooth' });
+        }
+        
+        // Download mod function - opens Modrinth link
+        function downloadMod() {
+            window.open('https://modrinth.com/mod/farmhelpereasy/versions', '_blank');
+        }
+    </script>
+</body>
+</html>
